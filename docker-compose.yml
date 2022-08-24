@@ -1,0 +1,23 @@
+version: "3.7"
+services:
+  app:
+    image: node:16-alpine
+    command: sh -c "yarn install && yarn test && yarn run dev"
+    ports:
+       - 8080:8080
+    working_dir: /app
+    volumes:
+       - ./:/app
+    environment:
+       PORT: 8080
+       MONGODB_URI: mongodb://mongo:27017/NODE_TS_DB
+  mongo:
+   image: mongo:4.2.8
+   ports:
+   - 27017:27017
+   volumes:
+   - mongodb:/data/db
+   - mongodb_config:/data/configdb
+volumes:
+ mongodb:
+ mongodb_config:      
