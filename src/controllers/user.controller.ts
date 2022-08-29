@@ -68,7 +68,6 @@ export default class UserController {
         };
       } else {
         const userId = generateSalt()
-        // item = { ...item, id: userId, name: `${item.name}`.trim().toLowerCase(), email: `${item.email}`.trim().toLowerCase(), password: `${generateHash(item.password)}`, created_at: Math.floor(new Date('2022-08-20').getTime() / 1000) }
         item = { ...item, id: userId, name: `${item.name}`.trim().toLowerCase(), email: `${item.email}`.trim().toLowerCase(), password: `${generateHash(item.password)}`, created_at: Math.floor(Date.now() / 1000) }
         console.log(` item ${item} `)
         const response = await dynamoDBClient
